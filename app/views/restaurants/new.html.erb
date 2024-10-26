@@ -1,0 +1,35 @@
+<h1>
+  Registrar Restaurante:
+</h1>
+
+<%= form_with model: @restaurant do |f| %>
+
+  <div>
+    <%= f.label :corporate_name %> <br />
+    <%= f.text_field :corporate_name %>
+  </div>
+
+  <div>
+    <%= f.label :brand_name %> <br />
+    <%= f.text_field :brand_name %>
+  </div>
+
+  <div>
+    <%= f.label :cnpj %> <br />
+    <%= f.text_field :cnpj %>
+  </div>
+
+  <div>
+    <%= f.label :phone_number %> <br />
+    <%= f.text_field :phone_number %>
+  </div>
+
+  <div>
+    <%= f.label :address %> <br />
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="register_button">
+    <%= f.submit "Criar conta" %>
+  </div>
+<% end %>
