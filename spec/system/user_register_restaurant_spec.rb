@@ -11,7 +11,7 @@ describe 'usuário registra restaurante' do
     fill_in "E-mail", with: "caio.sampaio@gmail.com"
     fill_in "Senha", with: "123456123456"
     fill_in "Confirme sua senha", with: "123456123456"
-    fill_in "CPF", with: "1351515"
+    fill_in "CPF", with: "57136336163"
     fill_in "Nome", with: "Caio"
     fill_in "Sobrenome", with: "Sampaio"
     within('.actions') do
@@ -25,7 +25,7 @@ describe 'usuário registra restaurante' do
 
   it 'após ser redirecionado ao tentar acessar outra tela' do
     # Arrange
-    user = User.create!(email: 'pedro@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: '12356465')
+    user = User.create!(email: 'pedro@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: "57136336163")
     
     # Act
     login_as(user)
@@ -39,7 +39,7 @@ describe 'usuário registra restaurante' do
 
   it 'com sucesso' do
     # Arrange
-    user = User.create!(email: 'pedro@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: '12356465')
+    user = User.create!(email: 'pedro@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: "57136336163")
     
     # Act
     login_as(user)
@@ -47,9 +47,9 @@ describe 'usuário registra restaurante' do
     click_on 'Registre seu restaurante'
     fill_in "Nome Fantasia", with: 'TIM'
     fill_in "Função Social", with: 'TIM Ltda'
-    fill_in "CNPJ", with: '564145616'
+    fill_in "CNPJ", with: "E67A879U2DOS80"
     fill_in "Endereço Completo", with: 'Rua São Pedro 1234, São Paulo/SP'
-    fill_in "Telefone", with: "9180088008"
+    fill_in "Telefone", with: "12345678911"
     within('.register_button') do
       click_on "Criar conta"
     end

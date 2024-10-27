@@ -27,7 +27,7 @@ describe 'usuário cria conta' do
     fill_in "E-mail", with: "caio.sampaio@gmail.com"
     fill_in "Senha", with: "123456123456"
     fill_in "Confirme sua senha", with: "123456123456"
-    fill_in "CPF", with: "1351515"
+    fill_in "CPF", with: "35224091594"
     fill_in "Nome", with: "Caio"
     fill_in "Sobrenome", with: "Sampaio"
     within('.actions') do

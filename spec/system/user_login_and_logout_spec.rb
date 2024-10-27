@@ -3,7 +3,7 @@ require 'rails_helper.rb'
 describe 'após criar conta, usuário' do
   it 'faz log in' do
     # Assert
-    user = User.create!(email: 'pedro@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: '12356465')
+    user = User.create!(email: 'pedro@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: '57136336163')
 
     # Act
     visit root_path
@@ -24,7 +24,7 @@ describe 'após criar conta, usuário' do
 
   it 'faz log out' do
     # Assert
-    user = User.create!(email: 'pedro@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: '12356465')
+    user = User.create!(email: 'pedro@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: '57136336163')
     
     # Act
     login_as(user)

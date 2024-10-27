@@ -5,5 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   validates :name, :last_name, :cpf, presence: true
-  has_one :restaurant   
+  has_one :restaurant
+  validate :cpf_check
+
+  private
+
+  def cpf_check
+    errors.add(:cpf, "inválido") unless CPF.valid?(cpf)
+  end
 end
