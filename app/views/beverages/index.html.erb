@@ -1,0 +1,15 @@
+<% @beverages.each do |bev| %>
+  <div class="dish_card" id="<%= bev.id %>">
+    <strong>
+      <%= bev.name %>
+    </strong>
+    <p>
+      <%= bev.description %>
+    </p>
+    <img src="<%= bev.image %>" alt=" <%= bev.name %> ">
+    <%= link_to "Editar", edit_beverage_path(bev) %>
+    <%= link_to "Remover", beverage_path(bev), data: {turbo_method: :delete} %>
+  </div>
+<% end %>
+
+<%= link_to 'Adicionar Bebida', new_beverage_path, class: "add_link" %>

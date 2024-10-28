@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :restaurants
   resources :dishes
+  resources :beverages
 
   # Rails.application.routes.draw do
   #   devise_for :users, controllers: {

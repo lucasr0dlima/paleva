@@ -35,4 +35,11 @@ class DishesController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    @dish = Dish.find(params[:id])
+    @dish.destroy
+
+    redirect_to dishes_path, alert: "Prato Removido"
+  end
 end

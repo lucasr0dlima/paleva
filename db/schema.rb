@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_28_114932) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_28_143851) do
+  create_table "beverages", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.boolean "alcohol"
+    t.string "calories"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.integer "restaurant_id", null: false
+    t.index ["restaurant_id"], name: "index_beverages_on_restaurant_id"
+    t.index ["user_id"], name: "index_beverages_on_user_id"
+  end
+
   create_table "dishes", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -54,6 +68,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_28_114932) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "beverages", "restaurants"
+  add_foreign_key "beverages", "users"
   add_foreign_key "dishes", "restaurants"
   add_foreign_key "dishes", "users"
   add_foreign_key "restaurants", "users"

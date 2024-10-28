@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :name, :last_name, :cpf, presence: true
   has_one :restaurant
   has_many :dishes
+  has_many :beverages
   validate :cpf_check
 
   private

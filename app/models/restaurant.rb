@@ -2,6 +2,7 @@ class Restaurant < ApplicationRecord
   #add code
   belongs_to :user
   has_many :dishes
+  has_many :beverages
   validates :brand_name, :corporate_name, :cnpj, :address, :phone_number, :email, 
             :code, presence: true 
   before_validation :add_email, :add_code

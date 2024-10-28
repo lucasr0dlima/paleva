@@ -1,0 +1,32 @@
+<h3>Editar <%= @beverage.name %></h3>
+
+<%= form_with model: @beverage do |f| %>
+  <div>
+    <%= f.label :name %> <br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :description %> <br />
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.label :calories %> (opcional)<br />
+    <%= f.text_field :calories %>
+  </div>
+
+  <div>
+    <%= f.label :alcohol %>
+    <%= f.check_box :alcohol %>
+  </div>
+
+  <div>
+    <%= f.label :image %> <br />
+    <%= f.text_field :image %>
+  </div>
+
+  <div class="register_button">
+    <%= f.submit "Editar" %>
+  </div>
+<% end %>
