@@ -1,8 +1,9 @@
 class Restaurant < ApplicationRecord
   #add code
   belongs_to :user
+  has_many :dishes
   validates :brand_name, :corporate_name, :cnpj, :address, :phone_number, :email, 
-            :user_id, :code, presence: true 
+            :code, presence: true 
   before_validation :add_email, :add_code
   validates :code, uniqueness: true
   validate :code_validation 
@@ -19,6 +20,10 @@ class Restaurant < ApplicationRecord
 
   def add_code
     self.code = SecureRandom.alphanumeric(6).upcase unless code.present?
+  end
+
+  def add_user
+    self.user = current_user unless User.present?
   end
 
   def code_validation

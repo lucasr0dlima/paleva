@@ -1,0 +1,15 @@
+<% @dishes.each do |dish| %>
+  <div class="dish_card" id="<%= dish.id %>">
+    <strong>
+      <%= dish.name %>
+    </strong>
+    <p>
+      <%= dish.description %>
+    </p>
+    <img src="<%= dish.image %>" alt=" <%= dish.name %> ">
+    <%= link_to "Editar", edit_dish_path(dish) %>
+    <%= link_to "Remover", dish_path(dish), data: {turbo_method: :delete} %>
+  </div>
+<% end %>
+
+<%= link_to 'Adicionar Prato', new_dish_path, class: "add_link" %>

@@ -68,7 +68,7 @@ RSpec.describe Restaurant, type: :model do
 
         place.valid?
 
-        expect(place.errors).to include :user_id 
+        expect(place.errors).to include :user 
       end
     end
     
