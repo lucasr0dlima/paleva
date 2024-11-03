@@ -92,7 +92,7 @@ describe 'usuário cadastra produto' do
         click_on 'Editar'
       end
       fill_in "Nome", with: "Carbonara"
-      within('form') do
+      within('.register_button') do
         click_on "Editar"
       end
   
@@ -116,7 +116,7 @@ describe 'usuário cadastra produto' do
         click_on 'Editar'
       end
       fill_in "Nome", with: ''
-      within('form') do
+      within('.register_button') do
         click_on "Editar"
       end
   
@@ -220,7 +220,7 @@ describe 'usuário cadastra produto' do
       click_on 'Editar'
     end
     fill_in "Nome", with: "Cerveja"
-    within('form') do
+    within('.register_button') do
       click_on "Editar"
     end
   
@@ -244,7 +244,7 @@ describe 'usuário cadastra produto' do
       click_on 'Editar'
     end
     fill_in "Nome", with: ''
-    within('form') do
+    within('.register_button') do
       click_on "Editar"
     end
 

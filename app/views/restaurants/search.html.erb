@@ -1,0 +1,29 @@
+<h2>Resultados:</h2>
+
+<% @dishes.each do |dish| %>
+  <div class="dish_card" id="<%= dish.id %>">
+    <strong>
+      <%= dish.name %>
+    </strong>
+    <p>
+      <%= dish.description %>
+    </p>
+    <img src="<%= dish.image %>" alt=" <%= dish.name %> ">
+    <%= link_to "Editar", edit_dish_path(dish) %>
+    <%= link_to "Remover", dish_path(dish), data: {turbo_method: :delete} %>
+  </div>
+<% end %>
+
+<% @beverages.each do |bev| %>
+  <div class="dish_card" id="<%= bev.id %>">
+    <strong>
+      <%= bev.name %>
+    </strong>
+    <p>
+      <%= bev.description %>
+    </p>
+    <img src="<%= bev.image %>" alt=" <%= bev.name %> ">
+    <%= link_to "Editar", edit_beverage_path(bev) %>
+    <%= link_to "Remover", beverage_path(bev), data: {turbo_method: :delete} %>
+  </div>
+<% end %>

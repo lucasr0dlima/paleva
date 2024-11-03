@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "home#index"
 
-  resources :restaurants
+  resources :restaurants do
+    get 'search', on: :collection
+  end
   resources :dishes
   resources :beverages
 

@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :authenticate_user!
+  before_action :must_register_restaurant, only: [:search]
   def new
     @restaurant = Restaurant.new
   end
@@ -18,5 +19,12 @@ class RestaurantsController < ApplicationController
       flash.now[:alert] = "Informações Incompletas"
       render :new, status: :unprocessable_entity
     end
+  end
+
+
+  def search
+    @query = params["query"]
+    @beverages = Beverage.where("name LIKE ?", "%#{@query}%")
+    @dishes = Dish.where("name LIKE ?", "%#{@query}%")
   end
 end
