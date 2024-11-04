@@ -6,10 +6,18 @@
     <p>
       <%= dish.description %>
     </p>
+    <p>
+      Status: <%= I18n.translate(dish.status) %>
+    </p>
     <img src="<%= dish.image %>" alt=" <%= dish.name %> ">
     <%= link_to "Editar", edit_dish_path(dish) %>
     <%= link_to "Porções", dish_portions_path(dish.id) %>
     <%= link_to "Remover", dish_path(dish), data: {turbo_method: :delete} %>
+    <% if dish.active? %>
+      <%= button_to "Desativar", disable_dish_path(dish), method: :get %>
+    <% elsif dish.inactive? %>  
+      <%= button_to "Ativar", enable_dish_path(dish), method: :get %>
+    <% end %>
   </div>
 <% end %>
 

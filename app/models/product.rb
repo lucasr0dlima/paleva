@@ -4,4 +4,6 @@ class Product < ApplicationRecord
   has_many :portions
 
   validates :name, :description, presence: true
+
+  enum :status, {:active=>0, :inactive=>5}
 end

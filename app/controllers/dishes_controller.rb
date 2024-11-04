@@ -42,4 +42,16 @@ class DishesController < ApplicationController
 
     redirect_to dishes_path, alert: "Prato Removido"
   end
+
+  def disable
+    @dish = Dish.find(params[:id])
+    @dish.inactive!
+    redirect_to dishes_path
+  end
+
+  def enable
+    @dish = Dish.find(params[:id])
+    @dish.active!
+    redirect_to dishes_path
+  end
 end

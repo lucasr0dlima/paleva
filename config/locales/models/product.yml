@@ -1,0 +1,9 @@
+pt-BR:
+  active: "Ativo"
+  inactive: "Desativado"
+  activerecord:
+    models:
+      product: "Produti"
+    attributes:
+      product:
+        status: "Status"

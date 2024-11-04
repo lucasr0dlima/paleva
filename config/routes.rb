@@ -18,9 +18,17 @@ Rails.application.routes.draw do
   end
   resources :dishes do
     resources :portions, only: [:new, :create, :index]
+    member do
+      get 'disable'
+      get 'enable'
+    end
   end
   resources :beverages do
     resources :portions, only: [:new, :create, :index]
+    member do
+      get 'disable'
+      get 'enable'
+    end
   end
   resources :products do
     resources :portions, only: [:new, :create, :index]

@@ -28,7 +28,7 @@ class BeveragesController < ApplicationController
   def update
     @beverage = Beverage.find(params[:id])
 
-    if @beverage.update(params.require(:beverage).permit(:name, :description, :image, :calories, :alcohol))
+    if @beverage.update(params.require(:beverage).permit(:name, :description, :image, :calories, :alcohol, :status))
       redirect_to beverages_path, notice: "Bebida editado com sucesso"
     else
       flash.now[:alert] = "Informações Incompletas"
@@ -41,5 +41,17 @@ class BeveragesController < ApplicationController
     @beverage.destroy
 
     redirect_to beverages_path, alert: "Bebida Removido"
+  end
+
+  def disable
+    @beverage = Beverage.find(params[:id])
+    @beverage.inactive!
+    redirect_to beverages_path
+  end
+
+  def enable
+    @beverage = Beverage.find(params[:id])
+    @beverage.active!
+    redirect_to beverages_path
   end
 end

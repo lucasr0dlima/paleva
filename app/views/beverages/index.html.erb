@@ -6,10 +6,18 @@
     <p>
       <%= bev.description %>
     </p>
+    <p>
+      Status: <%= I18n.translate(bev.status) %>
+    </p>
     <img src="<%= bev.image %>" alt=" <%= bev.name %> ">
     <%= link_to "Editar", edit_beverage_path(bev) %>
     <%= link_to "Porções", beverage_portions_path(bev.id) %>
     <%= link_to "Remover", beverage_path(bev), data: {turbo_method: :delete} %>
+    <% if bev.active? %>
+      <%= button_to "Desativar", disable_beverage_path(bev), method: :get %>
+    <% elsif bev.inactive? %>  
+      <%= button_to "Ativar", enable_beverage_path(bev), method: :get %>
+    <% end %>
   </div>
 <% end %>
 
