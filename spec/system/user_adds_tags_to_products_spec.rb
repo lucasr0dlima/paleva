@@ -3,8 +3,7 @@ require 'rails_helper'
 describe 'usuário adiciona tags à produtos' do
   it 'depois de adicionar uma tag, a partir da tela de criação' do
     user = User.create!(email: 'pedro@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: '57136336163')
-    place = Restaurant.create!(brand_name: 'TIM', corporate_name: 'Tim ltda', cnpj: "E67A879U2DOS80", address: 'Rua São Pedro 1234, São Paulo/SP', phone_number: "9180088008", user: user, code: 'EYFFKJ')
-    beverage = Beverage.create!(name: 'Caipirinha Azul', description: "Bebida alcoolica de limão e cachaça.", image: "https://i.panelinha.com.br/i1/228-q-8730-blog-caipirinha-de-limao.webp", alcohol: true,  user: user, restaurant: place)
+    Restaurant.create!(brand_name: 'TIM', corporate_name: 'Tim ltda', cnpj: "E67A879U2DOS80", address: 'Rua São Pedro 1234, São Paulo/SP', phone_number: "9180088008", user: user, code: 'EYFFKJ')
 
     login_as(user)
     visit root_path
@@ -90,6 +89,4 @@ describe 'usuário adiciona tags à produtos' do
       expect(page).to have_content tag.name
     end
   end
-
-  
 end

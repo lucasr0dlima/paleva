@@ -24,7 +24,7 @@ class RestaurantsController < ApplicationController
 
   def search
     @query = params["query"]
-    @beverages = Beverage.where("name LIKE ?", "%#{@query}%")
+    @beverages = current_user.beverages.where("name LIKE ?", "%#{@query}%")
     @dishes = Dish.where("name LIKE ?", "%#{@query}%")
   end
 end
