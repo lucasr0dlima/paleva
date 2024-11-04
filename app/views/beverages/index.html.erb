@@ -8,6 +8,7 @@
     </p>
     <img src="<%= bev.image %>" alt=" <%= bev.name %> ">
     <%= link_to "Editar", edit_beverage_path(bev) %>
+    <%= link_to "Porções", beverage_portions_path(bev.id) %>
     <%= link_to "Remover", beverage_path(bev), data: {turbo_method: :delete} %>
   </div>
 <% end %>

@@ -1,0 +1,8 @@
+<h3>Porções de <%= @product.name %> </h3>
+
+<% @portions.each do |p| %>
+  <div>
+    <p> Descrição <%= p.description %> </p>
+    <p> Preço: <%= p.price %> </p>
+  </div>
+<% end %>

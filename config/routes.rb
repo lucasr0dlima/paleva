@@ -16,10 +16,14 @@ Rails.application.routes.draw do
   resources :restaurants do
     get 'search', on: :collection
   end
-  resources :dishes
-  resources :beverages
+  resources :dishes do
+    resources :portions, only: [:new, :create, :index]
+  end
+  resources :beverages do
+    resources :portions, only: [:new, :create, :index]
+  end
   resources :products do
-    resources :portions, only: [:new]
+    resources :portions, only: [:new, :create, :index]
   end
   resources :portions
 

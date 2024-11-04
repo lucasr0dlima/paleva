@@ -8,6 +8,7 @@
     </p>
     <img src="<%= dish.image %>" alt=" <%= dish.name %> ">
     <%= link_to "Editar", edit_dish_path(dish) %>
+    <%= link_to "Porções", dish_portions_path(dish.id) %>
     <%= link_to "Remover", dish_path(dish), data: {turbo_method: :delete} %>
   </div>
 <% end %>
