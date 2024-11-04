@@ -33,4 +33,16 @@ class PortionsController < ApplicationController
 
     @portions = @product.portions
   end
+
+  def edit
+    @portion = Portion.find(params[:id])
+  end
+
+  def update
+    @portion = Portion.find(params[:id])
+
+    if @portion.update(params.require(:portion).permit(:price))
+      redirect_to product_portions_path(@portion.product.id), notice: "Porção atualizada com sucesso"
+    end
+  end
 end

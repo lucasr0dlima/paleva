@@ -1,0 +1,12 @@
+<h3>Nova preço de <%= @portion.product.name %></h3>
+
+<%= form_with model: [@portion] do |f| %>
+  <div>
+    <%= f.label :price, "Novo Preço" %> <br />
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="register_button">
+    <%= f.submit "Atualizar" %>
+  </div>
+<% end %>
