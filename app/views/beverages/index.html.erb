@@ -7,6 +7,10 @@
       <%= bev.description %>
     </p>
     <p>
+      <strong>Tags:</strong> <%= bev.all_tags %>
+    </p>
+    <%= link_to "Nova Tag", new_beverage_tagging_path(bev.id) %>
+    <p>
       Status: <%= I18n.translate(bev.status) %>
     </p>
     <img src="<%= bev.image %>" alt=" <%= bev.name %> ">

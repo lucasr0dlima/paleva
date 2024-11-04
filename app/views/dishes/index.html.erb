@@ -9,6 +9,10 @@
     <p>
       Status: <%= I18n.translate(dish.status) %>
     </p>
+    <p>
+      <strong>Tags:</strong> <%= dish.all_tags %>
+    </p>
+    <%= link_to "Nova Tag", new_dish_tagging_path(dish.id) %>
     <img src="<%= dish.image %>" alt=" <%= dish.name %> ">
     <%= link_to "Editar", edit_dish_path(dish) %>
     <%= link_to "Porções", dish_portions_path(dish.id) %>

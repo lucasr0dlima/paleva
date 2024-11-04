@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
   resources :dishes do
     resources :portions, only: [:new, :create, :index]
+    resources :taggings, only: [:new, :create]
     member do
       get 'disable'
       get 'enable'
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
   end
   resources :beverages do
     resources :portions, only: [:new, :create, :index]
+    resources :taggings, only: [:new, :create]
     member do
       get 'disable'
       get 'enable'
@@ -34,6 +36,8 @@ Rails.application.routes.draw do
     resources :portions, only: [:new, :create, :index]
   end
   resources :portions
+
+  resources :tags, only: [:new, :create]
 
   # Rails.application.routes.draw do
   #   devise_for :users, controllers: {

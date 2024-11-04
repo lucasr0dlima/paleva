@@ -1,0 +1,7 @@
+pt-BR:
+  activerecord:
+    models:
+      tag: "Tag"
+    attributes:
+      tag:
+        name: "Nome"
