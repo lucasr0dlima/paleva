@@ -22,7 +22,7 @@ class BeveragesController < ApplicationController
   end
 
   def edit
-    @beverage= Beverage.find(params[:id])
+    @beverage = Beverage.find(params[:id])
   end
 
   def update

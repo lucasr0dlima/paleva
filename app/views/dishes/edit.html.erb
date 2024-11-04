@@ -25,3 +25,6 @@
     <%= f.submit "Editar" %>
   </div>
 <% end %>
+
+<h3>Porções:</h3>
+<%= link_to "Adicionar Porção", new_product_portion_path(@dish.id) %>

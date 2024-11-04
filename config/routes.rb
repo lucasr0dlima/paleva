@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   end
   resources :dishes
   resources :beverages
+  resources :products do
+    resources :portions, only: [:new]
+  end
+  resources :portions
 
   # Rails.application.routes.draw do
   #   devise_for :users, controllers: {

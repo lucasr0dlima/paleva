@@ -1,0 +1,17 @@
+<h3>Nova porção de <%= @product.name %></h3>
+
+<%= form_with model: @portion do |f| %>
+  <div>
+    <%= f.label :description %> <br />
+    <%= f.text_field :description %>
+  </div>
+
+  <div>
+    <%= f.label :price %> <br />
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="register_button">
+    <%= f.submit "Adicionar" %>
+  </div>
+<% end %>

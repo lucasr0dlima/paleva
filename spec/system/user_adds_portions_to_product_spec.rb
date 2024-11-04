@@ -12,7 +12,7 @@ describe 'Usuário adiciona porção' do
     within("##{dish.id}") do
         click_on 'Editar'
     end
-    click_on "Adicionar Porções"
+    click_on "Adicionar Porção"
 
     expect(page).to have_field "Preço"
     expect(page).to have_field "Descrição"

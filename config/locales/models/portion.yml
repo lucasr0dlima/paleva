@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      portion: "Porção"
+    attributes:
+      portion:
+        description: "Descrição"
+        price: "Preço"
+        product: "Produto"
