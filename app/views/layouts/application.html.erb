@@ -48,6 +48,19 @@
       </nav>
     </header>
     <main>
+      <% if @order_list %>
+        <div id="order_list">
+          <h2>Itens do Pedido: </h2>
+          <ul>
+          <% @order_list.each do |order| %>
+            <li>
+              <%= order.product.name%> | <%= order.description %>
+            </li>
+          <% end %>
+          </ul>
+          <%= link_to "Limpar", "/clear_order" %>
+        </div>
+      <% end %>
       <%= yield %>
     </main>
   </body>

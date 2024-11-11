@@ -1,4 +1,5 @@
 class TaggingsController < ApplicationController
+  before_action :must_register_restaurant
   def new
     if params[:dish_id]
       @product = Product.find(params[:dish_id])

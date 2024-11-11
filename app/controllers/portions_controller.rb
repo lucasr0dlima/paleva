@@ -1,4 +1,5 @@
 class PortionsController < ApplicationController
+  before_action :must_register_restaurant
   def new
     @product = Product.find(params[:product_id])
 
@@ -44,5 +45,15 @@ class PortionsController < ApplicationController
     if @portion.update(params.require(:portion).permit(:price))
       redirect_to product_portions_path(@portion.product.id), notice: "Porção atualizada com sucesso"
     end
+  end
+
+  def order
+    session[:order_list] ||= []
+
+    @portion = Portion.find(params[:id])
+
+    session[:order_list] << @portion.id
+
+    redirect_to root_path
   end
 end

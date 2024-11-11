@@ -1,4 +1,5 @@
 class MenuItemsController < ApplicationController
+  before_action :must_register_restaurant
   def new
     
     @menu = Menu.find(params[:menu_id])

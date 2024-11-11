@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "home#index"
 
+  get "/clear_order", to: "home#clear_order"
   resources :restaurants do
     get 'search', on: :collection
   end
@@ -35,7 +36,9 @@ Rails.application.routes.draw do
   resources :products do
     resources :portions, only: [:new, :create, :index]
   end
-  resources :portions
+  resources :portions do
+    get 'order', on: :member
+  end
 
   resources :tags, only: [:new, :create]
 

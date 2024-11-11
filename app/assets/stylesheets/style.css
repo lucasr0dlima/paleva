@@ -97,3 +97,8 @@ main {
   flex-wrap: wrap;
   padding: 2px 16px;
 }
+
+#order_list {
+  display: flex;
+  flex-direction: column;
+}

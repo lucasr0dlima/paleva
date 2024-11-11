@@ -25,11 +25,16 @@
           <dd>
             <%= portion.price%>
           </dd>
+          <dd>
+            <%= link_to "Adicionar a pedido", order_portion_path(portion.id) %>
+          </dd>
         <% end %>
 
         </dl>
 
         <img src="<%= item.image %>" alt=" <%= item.name %> ">
+
+        
       </div>
     <% end %>
 
@@ -53,11 +58,16 @@
           <dd>
             <%= portion.price%>
           </dd>
+          <dd>
+            <%= link_to "Adicionar a pedido", order_portion_path(portion.id) %>
+          </dd>
         <% end %>
 
         </dl>
 
         <img src="<%= item.image %>" alt=" <%= item.name %> ">
+
+       
       </div>
     <% end %>  
   <% end %>

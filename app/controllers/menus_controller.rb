@@ -1,4 +1,5 @@
 class MenusController < ApplicationController
+  before_action :must_register_restaurant
   def new
     @menu = Menu.new
   end
@@ -14,6 +15,10 @@ class MenusController < ApplicationController
   end
 
   def show
+    if session[:order_list]
+      @order_list = Portion.where(id: session[:order_list])
+    end
+
     @menu = Menu.find(params[:id])
     @dishes = current_user.dishes
     @beverages = current_user.beverages
