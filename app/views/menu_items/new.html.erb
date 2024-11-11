@@ -1,0 +1,13 @@
+<h3>Adicionar Item ao Cardápio: <%= @menu.name %></h3>
+
+<%= form_with model: [@menu, @menu_item] do |f| %>
+  <div>
+    <%= f.label :tag_id, "Selecione o Item" %> <br />
+    <%= f.collection_select :product_id, @products, :id, :name %>
+  </div>
+
+  <div class="register_button">
+    <%= f.submit "Adicionar" %>
+  </div>
+
+<% end %>

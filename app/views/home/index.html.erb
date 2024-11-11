@@ -1,26 +1,18 @@
 <div class="restaurant_details">
 
-<% if user_signed_in? && !current_user.restaurant.present? %>
-  <%= link_to 'Registre seu restaurante', new_restaurant_path%>
-<% end %>
+  <% if user_signed_in? && !current_user.restaurant.present? %>
+    <%= link_to 'Registre seu restaurante', new_restaurant_path%>
+  <% end %>
 
-<% if user_signed_in? && current_user.restaurant.present? %>
-  <h2> <%= current_user.restaurant.brand_name %> </h2>
-  <h3> Código - <%= current_user.restaurant.code %> </h3>
+  <% if user_signed_in? && current_user.restaurant.present? %>
 
-  <dl>
-    <dt>Função social:</dt>
-    <dd> <%= current_user.restaurant.corporate_name %> </dd>
-
-    <dt>CNPJ:</dt>
-    <dd> <%= current_user.restaurant.cnpj %> </dd>
-
-    <dt>Endereço:</dt>
-    <dd> <%= current_user.restaurant.address %> </dd>
-
-    <dt>Telefone:</dt>
-    <dd> <%= current_user.restaurant.phone_number %> </dd>
-  </dl>
-<% end %>
+    <% current_user.restaurant.menus.each do |menu| %>
+      <ul>
+        <li>
+          <%= link_to "#{menu.name}", menu_path(menu) %>
+        </li>
+      </ul>
+    <% end %>
+  <% end %>
 
 </div>

@@ -39,6 +39,10 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:new, :create]
 
+  resources :menus do
+    resources :menu_items
+  end
+
   # Rails.application.routes.draw do
   #   devise_for :users, controllers: {
   #     sessions: 'users/sessions'

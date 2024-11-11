@@ -1,0 +1,49 @@
+<div class="product_details">
+  
+  <h3> <%= @beverage.name %> </h3>
+
+  <div>
+    <img src="<%= @beverage.image %>" alt=" <%= @beverage.name %> ">
+  </div>
+
+  <div>
+      <strong>
+        <%= Beverage.human_attribute_name("description") %> :
+      </strong>
+      <%= @beverage.description %>
+  </div>
+
+  
+  <div>
+    <strong>
+      <%= Beverage.human_attribute_name("alcohol") %> :
+    </strong>
+    <% if @beverage.alcohol == true %>
+      <%= Beverage.human_attribute_name("Sim") %>
+    <% else %>
+      <%= Beverage.human_attribute_name("Não") %>
+    <% end %>
+  </div>
+  
+  <div>
+      <strong>
+        <%= Beverage.human_attribute_name("calories") %>:
+      </strong>
+      <%= @beverage.calories %>
+  </div>
+
+  <div>
+      <strong>
+        <%= Beverage.human_attribute_name("status") %> :
+      </strong>
+      <%= @beverage.status %>
+  </div>
+
+  <%= link_to "Editar", edit_beverage_path(@beverage) %>
+  <%= link_to "Porções", beverage_portions_path(@beverage.id) %>
+  <%= link_to "Remover", beverage_path(@beverage), data: {turbo_method: :delete} %>
+
+  <%= link_to "Adicionar Tag", new_beverage_tagging_path(@beverage.id) %>
+
+</div>  
+

@@ -1,0 +1,10 @@
+<%= form_with model: @menu do |f| %>
+  <div>
+    <%= f.label :name %> <br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="register_button">
+    <%= f.submit "Cadastrar" %>
+  </div>
+<% end %>

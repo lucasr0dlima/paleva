@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :authenticate_user!
-  before_action :must_register_restaurant, only: [:search]
+  before_action :must_register_restaurant, only: [:search, :show]
   def new
     @restaurant = Restaurant.new
   end
@@ -26,5 +26,9 @@ class RestaurantsController < ApplicationController
     @query = params["query"]
     @beverages = current_user.beverages.where("name LIKE ?", "%#{@query}%")
     @dishes = Dish.where("name LIKE ?", "%#{@query}%")
+  end
+
+  def show
+    @restaurant = current_user.restaurant
   end
 end

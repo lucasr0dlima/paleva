@@ -1,22 +1,9 @@
 <% @beverages.each do |bev| %>
   <div class="dish_card" id="<%= bev.id %>">
-    <strong>
-      <%= bev.name %>
-    </strong>
-    <p>
-      <%= bev.description %>
-    </p>
-    <p>
-      <strong>Tags:</strong> <%= bev.all_tags %>
-    </p>
-    <%= link_to "Nova Tag", new_beverage_tagging_path(bev.id) %>
-    <p>
-      Status: <%= I18n.translate(bev.status) %>
-    </p>
+    <%= link_to "#{bev.name}", beverage_path(bev) %> <br />
+    Status: <%= I18n.translate(bev.status) %>
+    <p> Tags: <%= bev.all_tags %> </p>
     <img src="<%= bev.image %>" alt=" <%= bev.name %> ">
-    <%= link_to "Editar", edit_beverage_path(bev) %>
-    <%= link_to "Porções", beverage_portions_path(bev.id) %>
-    <%= link_to "Remover", beverage_path(bev), data: {turbo_method: :delete} %>
     <% if bev.active? %>
       <%= button_to "Desativar", disable_beverage_path(bev), method: :get %>
     <% elsif bev.inactive? %>  

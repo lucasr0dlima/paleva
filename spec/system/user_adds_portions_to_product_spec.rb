@@ -10,8 +10,9 @@ describe 'Usuário adiciona porção' do
     visit root_path
     click_on "Pratos"
     within("##{dish.id}") do
-        click_on 'Editar'
+        click_on "#{dish.name}"
     end
+    click_on "Editar"
     click_on "Adicionar Porção"
 
     expect(page).to have_field "Preço"
@@ -27,8 +28,9 @@ describe 'Usuário adiciona porção' do
     visit root_path
     click_on "Pratos"
     within("##{dish.id}") do
-        click_on 'Editar'
+        click_on "#{dish.name}"
     end
+    click_on "Editar"
     click_on "Adicionar Porção"
     fill_in "Preço", with: "R$20,00"
     fill_in "Descrição", with: "Porção de 200g"
@@ -48,8 +50,9 @@ describe 'Usuário adiciona porção' do
     visit root_path
     click_on "Pratos"
     within("##{dish.id}") do
-        click_on 'Editar'
+        click_on "#{dish.name}"
     end
+    click_on "Editar"
     click_on "Adicionar Porção"
     click_on "Adicionar"
     
@@ -66,8 +69,9 @@ describe 'Usuário adiciona porção' do
     visit root_path
     click_on "Pratos"
     within("##{dish.id}") do
-        click_on 'Porções'
+        click_on "#{dish.name}"
     end
+    click_on "Porções"
 
     expect(page).to have_content "R$20,00"
     expect(page).to have_content "Porção de 200g"
@@ -83,8 +87,9 @@ describe 'Usuário adiciona porção' do
     visit root_path
     click_on "Bebidas"
     within("##{beverage.id}") do
-        click_on 'Porções'
+        click_on "#{beverage.name}"
     end
+    click_on "Porções"
 
     expect(page).to have_content "R$20,00"
     expect(page).to have_content "500ml"
@@ -100,8 +105,9 @@ describe 'Usuário adiciona porção' do
     visit root_path
     click_on "Bebidas"
     within("##{beverage.id}") do
-        click_on 'Porções'
+        click_on "#{beverage.name}"
     end
+    click_on "Porções"
     within("##{portion.id}") do
         click_on 'Editar Preço'
     end
@@ -119,8 +125,9 @@ describe 'Usuário adiciona porção' do
     visit root_path
     click_on "Bebidas"
     within("##{beverage.id}") do
-        click_on 'Porções'
+        click_on "#{beverage.name}"
     end
+    click_on "Porções"
     within("##{portion.id}") do
         click_on 'Editar Preço'
     end

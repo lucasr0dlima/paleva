@@ -1,0 +1,36 @@
+<div class="product_details">
+
+  <h3> <%= @dish.name %> </h3>
+
+  <div>
+    <img src="<%= @dish.image %>" alt=" <%= @dish.name %> ">
+  </div>
+
+  <div>
+      <strong>
+        <%= Dish.human_attribute_name("description") %> :
+      </strong>
+      <%= @dish.description %>
+  </div>
+
+  <div>
+      <strong>
+        <%= Dish.human_attribute_name("calories") %> :
+      </strong>
+      <%= @dish.calories %>
+  </div>
+
+  <div>
+      <strong>
+        <%= Dish.human_attribute_name("status") %> :
+      </strong>
+      <%= @dish.status %>
+  </div>
+
+  <%= link_to "Editar", edit_dish_path(@dish) %>
+  <%= link_to "Porções", dish_portions_path(@dish.id) %>
+  <%= link_to "Remover", dish_path(@dish), data: {turbo_method: :delete} %>
+
+  <%= link_to "Adicionar Tag", new_dish_tagging_path(@dish.id) %>
+
+</div>

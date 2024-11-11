@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one :restaurant
   has_many :dishes
   has_many :beverages
+  has_many :products
   validate :cpf_check
 
   private

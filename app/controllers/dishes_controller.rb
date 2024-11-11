@@ -54,4 +54,8 @@ class DishesController < ApplicationController
     @dish.active!
     redirect_to dishes_path
   end
+
+  def show
+    @dish = Dish.find(params[:id])
+  end
 end

@@ -29,8 +29,9 @@ describe 'usuário adiciona tags à produtos' do
     click_on "Salvar"
     click_on "Bebidas"
     within("##{beverage.id}") do
-      click_on "Nova Tag"
+      click_on "#{beverage.name}"
     end
+    click_on "Adicionar Tag"
 
     page.has_select? "Selecione a Tag", options:["Premium"]
   end
@@ -44,8 +45,9 @@ describe 'usuário adiciona tags à produtos' do
     visit root_path
     click_on "Bebidas"
     within("##{beverage.id}") do
-      click_on "Nova Tag"
+      click_on "#{beverage.name}"
     end
+    click_on "Adicionar Tag"
 
     expect(page).to have_field "Selecione a Tag"
   end
@@ -60,8 +62,9 @@ describe 'usuário adiciona tags à produtos' do
     visit root_path
     click_on "Pratos"
     within("##{dish.id}") do
-      click_on "Nova Tag"
+      click_on "#{dish.name}"
     end
+    click_on "Adicionar Tag"
     select tag.name, from: "Selecione a Tag"
     click_on "Adicionar"
 
@@ -80,8 +83,9 @@ describe 'usuário adiciona tags à produtos' do
     visit root_path
     click_on "Bebidas"
     within("##{beverage.id}") do
-      click_on "Nova Tag"
+      click_on "#{beverage.name}"
     end
+    click_on "Adicionar Tag"
     select tag.name, from: "Selecione a Tag"
     click_on "Adicionar"
 

@@ -3,7 +3,7 @@ pt-BR:
   inactive: "Desativado"
   activerecord:
     models:
-      product: "Produti"
+      product: "Produto"
     attributes:
       product:
         status: "Status"

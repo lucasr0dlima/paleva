@@ -84,11 +84,12 @@ describe 'usuário registra restaurante' do
   it 'e vê os detalhes na tela inicial' do
     # Arrange
     user = User.create!(email: 'pedro@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: "57136336163")
-    place = Restaurant.new(brand_name: 'CLARO', corporate_name: 'Claro ltda', cnpj: "XZ99QR9ILGDO23", address: 'Rua São João 777, RIO/RJ', phone_number: "9197777779", user: user, code: "JM1VHG")
+    place = Restaurant.create!(brand_name: 'CLARO', corporate_name: 'Claro ltda', cnpj: "XZ99QR9ILGDO23", address: 'Rua São João 777, RIO/RJ', phone_number: "9197777779", user: user, code: "JM1VHG")
 
     # Act
     login_as(user)
     visit root_path
+    click_on "Detalhes do Restaurante"
 
     # Assert
     expect(page).to have_content place.brand_name

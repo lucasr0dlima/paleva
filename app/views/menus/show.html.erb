@@ -1,0 +1,11 @@
+<%= link_to 'Adicionar Item', new_menu_menu_item_path(@menu), class: "add_link" %>
+
+<h3> <% @menu.name %> </h3>
+
+<% @menu.products.each do |item| %>
+  <ul>
+    <li>
+      <%= item.name %>
+    </li>
+  </ul>
+<% end %>

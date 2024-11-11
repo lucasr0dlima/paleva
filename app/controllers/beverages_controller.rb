@@ -54,4 +54,8 @@ class BeveragesController < ApplicationController
     @beverage.active!
     redirect_to beverages_path
   end
+
+  def show
+    @beverage = Beverage.find(params[:id])
+  end
 end

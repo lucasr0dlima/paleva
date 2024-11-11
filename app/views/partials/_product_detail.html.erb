@@ -1,0 +1,36 @@
+<h3> <%= product.name %> </h3>
+
+<div>
+    <strong>
+      <%= I18n.translate(product.human_attribute_name(:description)) %>
+    </strong>
+    <%= product.description %>
+</div>
+
+<% if product.type == "Beverage" %>
+  <div>
+    <strong>
+      <%= I18n.translate(product.human_attribute_name(:alcohol)) %>
+    </strong>
+    <% if product.alcohol == true %>
+      <%= I18n.translate("Sim") %>
+    <% else %>
+      <%= I18n.translate("Não") %>
+    <% end %>
+  </div>
+<% end %>
+<div>
+    <strong>
+      <%= I18n.translate(product.human_attribute_name(:calories)) %>
+    </strong>
+    <%= product.calories %>
+</div>
+
+<div>
+    <strong>
+      <%= I18n.translate(product.human_attribute_name(:status)) %>
+    </strong>
+    <%= product.status %>
+</div>
+
+

@@ -1,22 +1,9 @@
 <% @dishes.each do |dish| %>
   <div class="dish_card" id="<%= dish.id %>">
-    <strong>
-      <%= dish.name %>
-    </strong>
-    <p>
-      <%= dish.description %>
-    </p>
-    <p>
-      Status: <%= I18n.translate(dish.status) %>
-    </p>
-    <p>
-      <strong>Tags:</strong> <%= dish.all_tags %>
-    </p>
-    <%= link_to "Nova Tag", new_dish_tagging_path(dish.id) %>
+    <%= link_to "#{dish.name}", dish_path(dish) %> <br />
+    Status: <%= I18n.translate(dish.status) %> <br />
+    <p> Tags: <%= dish.all_tags %> </p>
     <img src="<%= dish.image %>" alt=" <%= dish.name %> ">
-    <%= link_to "Editar", edit_dish_path(dish) %>
-    <%= link_to "Porções", dish_portions_path(dish.id) %>
-    <%= link_to "Remover", dish_path(dish), data: {turbo_method: :delete} %>
     <% if dish.active? %>
       <%= button_to "Desativar", disable_dish_path(dish), method: :get %>
     <% elsif dish.inactive? %>  

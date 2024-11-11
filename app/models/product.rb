@@ -4,8 +4,9 @@ class Product < ApplicationRecord
   has_many :portions
   has_many :taggings
   has_many :tags, through: :taggings
+  has_many :menu_items
 
-  validates :name, :description, presence: true
+  validates :name, :description, :status, presence: true
 
   enum :status, {:active=>0, :inactive=>5}
 
