@@ -44,8 +44,7 @@ main {
   border: 1px solid #333;
   padding: 2px;
   gap: 3px;
-  height: 350px;
-  max-height: 400px;
+  height: 100%;
 }
 
 .dish_card img {
@@ -89,4 +88,12 @@ main {
 
 .product_details img {
   width: 20vw;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 2px 16px;
 }

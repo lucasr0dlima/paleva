@@ -6,6 +6,8 @@
 
   <% if user_signed_in? && current_user.restaurant.present? %>
 
+    <h2>Cardápios: </h2>
+
     <% current_user.restaurant.menus.each do |menu| %>
       <ul>
         <li>

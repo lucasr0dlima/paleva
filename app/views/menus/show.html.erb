@@ -1,11 +1,65 @@
 <%= link_to 'Adicionar Item', new_menu_menu_item_path(@menu), class: "add_link" %>
 
-<h3> <% @menu.name %> </h3>
+<h1> Cardápio : <%= @menu.name %> </h3>
 
-<% @menu.products.each do |item| %>
-  <ul>
-    <li>
-      <%= item.name %>
-    </li>
-  </ul>
-<% end %>
+<div class="menu">
+
+  <% @menu.products.each do |item| %>
+
+    <% if item.type == "Dish" %>
+      <div class="dish_card" id="<%= item.id %>">
+        <strong>
+          <%= item.name %>
+        </strong>
+        <p>
+          <%= item.description %>
+        </p>
+        <p>Porções: </p>
+        
+        <dl>
+
+        <% item.portions.each do |portion| %>
+          <dt>
+            <%= portion.description %>
+          </dt>
+          <dd>
+            <%= portion.price%>
+          </dd>
+        <% end %>
+
+        </dl>
+
+        <img src="<%= item.image %>" alt=" <%= item.name %> ">
+      </div>
+    <% end %>
+
+    <% if item.type == "Beverage" %>
+      <div class="dish_card" id="<%= item.id %>">
+        <strong>
+          <%= item.name %>
+        </strong>
+        <p>
+          <%= item.description %>
+        </p>
+
+        <p>Porções: </p>
+        
+        <dl>
+
+        <% item.portions.each do |portion| %>
+          <dt>
+            <%= portion.description %>
+          </dt>
+          <dd>
+            <%= portion.price%>
+          </dd>
+        <% end %>
+
+        </dl>
+
+        <img src="<%= item.image %>" alt=" <%= item.name %> ">
+      </div>
+    <% end %>  
+  <% end %>
+
+</div>

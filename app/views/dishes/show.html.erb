@@ -27,6 +27,13 @@
       <%= @dish.status %>
   </div>
 
+  Porções :
+  <% @dish.portions.each do |p| %>
+    <div id="<%= p.id %>">
+      <p> <%= p.description %> : <%= p.price %> </p>
+      
+    </div>
+  <% end %>
   <%= link_to "Editar", edit_dish_path(@dish) %>
   <%= link_to "Porções", dish_portions_path(@dish.id) %>
   <%= link_to "Remover", dish_path(@dish), data: {turbo_method: :delete} %>

@@ -2,28 +2,28 @@
 
 <% @dishes.each do |dish| %>
   <div class="dish_card" id="<%= dish.id %>">
-    <strong>
-      <%= dish.name %>
-    </strong>
-    <p>
-      <%= dish.description %>
-    </p>
+    <%= link_to "#{dish.name}", dish_path(dish) %> <br />
+    Status: <%= I18n.translate(dish.status) %> <br />
+    <p> Tags: <%= dish.all_tags %> </p>
     <img src="<%= dish.image %>" alt=" <%= dish.name %> ">
-    <%= link_to "Editar", edit_dish_path(dish) %>
-    <%= link_to "Remover", dish_path(dish), data: {turbo_method: :delete} %>
+    <% if dish.active? %>
+      <%= button_to "Desativar", disable_dish_path(dish), method: :get %>
+    <% elsif dish.inactive? %>  
+      <%= button_to "Ativar", enable_dish_path(dish), method: :get %>
+    <% end %>
   </div>
 <% end %>
 
 <% @beverages.each do |bev| %>
   <div class="dish_card" id="<%= bev.id %>">
-    <strong>
-      <%= bev.name %>
-    </strong>
-    <p>
-      <%= bev.description %>
-    </p>
+    <%= link_to "#{bev.name}", beverage_path(bev) %> <br />
+    Status: <%= I18n.translate(bev.status) %>
+    <p> Tags: <%= bev.all_tags %> </p>
     <img src="<%= bev.image %>" alt=" <%= bev.name %> ">
-    <%= link_to "Editar", edit_beverage_path(bev) %>
-    <%= link_to "Remover", beverage_path(bev), data: {turbo_method: :delete} %>
+    <% if bev.active? %>
+      <%= button_to "Desativar", disable_beverage_path(bev), method: :get %>
+    <% elsif bev.inactive? %>  
+      <%= button_to "Ativar", enable_beverage_path(bev), method: :get %>
+    <% end %>
   </div>
 <% end %>

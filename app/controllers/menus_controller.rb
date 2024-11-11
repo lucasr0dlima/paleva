@@ -15,5 +15,7 @@ class MenusController < ApplicationController
 
   def show
     @menu = Menu.find(params[:id])
+    @dishes = current_user.dishes
+    @beverages = current_user.beverages
   end
 end
