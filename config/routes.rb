@@ -48,6 +48,8 @@ Rails.application.routes.draw do
 
   resources :menu_items
 
+  resources :orders
+
   # Rails.application.routes.draw do
   #   devise_for :users, controllers: {
   #     sessions: 'users/sessions'
