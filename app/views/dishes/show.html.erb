@@ -30,7 +30,7 @@
   Porções :
   <% @dish.portions.each do |p| %>
     <div id="<%= p.id %>">
-      <p> <%= p.description %> : <%= p.price %> </p>
+      <p> <%= p.description %> : <%= t('portion_price', price: p.dollars) %> </p>
       
     </div>
   <% end %>

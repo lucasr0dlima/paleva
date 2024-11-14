@@ -1,4 +1,5 @@
 pt-BR:
+  portion_price: "R$%{price}"
   activerecord:
     models:
       portion: "Porção"

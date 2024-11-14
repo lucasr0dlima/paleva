@@ -2,8 +2,8 @@
 
 <%= form_with model: [@portion] do |f| %>
   <div>
-    <%= f.label :price, "Novo Preço" %> <br />
-    <%= f.text_field :price %>
+    <%= f.label :price, "Novo Preço" %> (em centavos) <br />
+    <%= f.number_field :price %>
   </div>
 
   <div class="register_button">

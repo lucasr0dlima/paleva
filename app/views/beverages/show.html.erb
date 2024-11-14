@@ -39,6 +39,14 @@
       <%= @beverage.status %>
   </div>
 
+  Porções :
+  <% @beverage.portions.each do |p| %>
+    <div id="<%= p.id %>">
+      <p> <%= p.description %> : <%= t('portion_price', price: p.dollars) %> </p>
+      
+    </div>
+  <% end %>
+
   <%= link_to "Editar", edit_beverage_path(@beverage) %>
   <%= link_to "Porções", beverage_portions_path(@beverage.id) %>
   <%= link_to "Remover", beverage_path(@beverage), data: {turbo_method: :delete} %>

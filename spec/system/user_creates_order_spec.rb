@@ -47,4 +47,6 @@ describe 'Usuário faz um pedido' do
   #   expect(page).to have_field "E-mail"
   #   expect(page).to have_field "CPF"
   # end
+
+  # order_controller!
 end

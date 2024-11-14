@@ -3,7 +3,7 @@
 <% @portions.each do |p| %>
   <div id="<%= p.id %>">
     <p> Descrição <%= p.description %> </p>
-    <p> Preço: <%= p.price %> </p>
+    <p> Preço: <%= t('portion_price', price: p.dollars) %> </p>
     <%= link_to "Editar Preço", edit_portion_path(p.id) %>
   </div>
 <% end %>
