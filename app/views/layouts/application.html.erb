@@ -27,6 +27,7 @@
           <%= link_to 'Sair', destroy_user_session_path, data: { turbo_method: :delete }, class: "nav_a" %>
           <%= link_to 'Pratos', dishes_path, class: "nav_a"  %>
           <%= link_to 'Bebidas', beverages_path, class: "nav_a"  %>
+          <%= link_to 'Pedidos', orders_path, class: "nav_a"  %>
           <% if current_user.restaurant.present? %>
             <%= link_to 'Detalhes do Restaurante', restaurant_path(current_user.restaurant.id), class: "nav_a"  %>
           <% end %>
@@ -54,11 +55,13 @@
           <ul>
           <% @order_list.each do |order| %>
             <li>
-              <%= order.product.name%> | <%= order.description %>
+              <%= order.product.name%> | <%= order.description %> | <%= t('portion_price', price: order.dollars) %>
             </li>
           <% end %>
           </ul>
-          <%= link_to "Limpar", "/clear_order" %> | <%= link_to "Finalizar Pedido", new_order_path %>
+          <%= link_to "Limpar", "/clear_order" %> 
+          <%= link_to "Finalizar Pedido", new_order_path %>
+          
         </div>
       <% end %>
       <%= yield %>

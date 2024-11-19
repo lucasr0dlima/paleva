@@ -19,15 +19,17 @@
         <dl>
 
         <% item.portions.each do |portion| %>
-          <dt>
-            <%= portion.description %>
-          </dt>
-          <dd>
-            <%= t('portion_price', price: portion.dollars)%>
-          </dd>
-          <dd>
-            <%= link_to "Adicionar a pedido", order_portion_path(portion.id) %>
-          </dd>
+          <div id= "portion_<%= portion.id %>">
+            <dt>
+              <%= portion.description %>
+            </dt>
+            <dd>
+              <%= t('portion_price', price: portion.dollars)%>
+            </dd>
+            <dd>
+              <%= link_to "Adicionar a pedido", order_portion_path(portion.id) %>
+            </dd>
+          </div>
         <% end %>
 
         </dl>
@@ -52,15 +54,17 @@
         <dl>
 
         <% item.portions.each do |portion| %>
-          <dt>
-            <%= portion.description %>
-          </dt>
-          <dd>
-            <%= t('portion_price', price: portion.dollars)%>
-          </dd>
-          <dd>
-            <%= link_to "Adicionar a pedido", order_portion_path(portion.id) %>
-          </dd>
+          <div id= "portion_<%= portion.id %>">
+            <dt>
+              <%= portion.description %>
+            </dt>
+            <dd>
+              <%= t('portion_price', price: portion.dollars)%>
+            </dd>
+            <dd>
+              <%= link_to "Adicionar a pedido", order_portion_path(portion.id) %>
+            </dd>
+          </div>
         <% end %>
 
         </dl>

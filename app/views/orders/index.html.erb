@@ -1,0 +1,4 @@
+<% @orders.each do |order| %>
+  <a href="<%= order_path(order) %>">Pedido <%= order.code %> <%= order.name %></a>
+  <%= I18n.translate(order.status) %>
+<% end %>

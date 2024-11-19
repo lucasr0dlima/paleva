@@ -1,0 +1,40 @@
+<div class="order_details">
+
+  <h3> Pedido <%= @order.code %> </h3>
+  
+  <div>
+      <strong>
+        <%= Order.human_attribute_name("name") %> :
+      </strong>
+      <%= @order.name %>
+  </div>
+
+  <div>
+      <strong>
+        <%= Order.human_attribute_name("email") %> :
+      </strong>
+      <%= @order.email %>
+  </div>
+
+  <div>
+      <strong>
+        <%= Order.human_attribute_name("cpf") %> :
+      </strong>
+      <%= @order.cpf %>
+  </div>
+
+  <div>
+      <strong>
+        <%= Order.human_attribute_name("phone_number") %> :
+      </strong>
+      <%= @order.phone_number %>
+  </div>
+
+  Itens :
+  <% @portions.each do |item| %>
+    <div id="<%= item.id %>">
+      <p> <%= item.product.name %> : <%= item.description %> | <%= t('portion_price', price: item.dollars) %> </p>
+    </div>
+  <% end %>
+
+</div>

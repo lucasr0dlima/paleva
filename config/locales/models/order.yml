@@ -1,0 +1,16 @@
+pt-BR:
+  pending: "Aguardando confirmação"
+  preparation: "Em preparação"
+  canceled: "Cancelado"
+  ready: "Pronto"
+  delivered: "Entregue"
+  activerecord:
+    models:
+      order: "Pedido"
+    attributes:
+      order:
+        name: "Nome"
+        phone_number: "Telefone"
+        email: "E-mail"
+        cpf: "CPF"
+        status:
