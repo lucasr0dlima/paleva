@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    models:
+      permit: "Permissão"
+    attributes:
+      portion:
+        email: "E-mail"
+        cpf: "CPF"

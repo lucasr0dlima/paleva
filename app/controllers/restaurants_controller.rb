@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :authenticate_user!
   before_action :must_register_restaurant, only: [:search, :show]
+  before_action :must_be_admin, only: [:new, :create, :search]
   def new
     @restaurant = Restaurant.new
   end

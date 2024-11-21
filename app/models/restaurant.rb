@@ -5,6 +5,7 @@ class Restaurant < ApplicationRecord
   has_many :beverages
   has_many :menus
   has_many :orders
+  has_many :permits
   validates :brand_name, :corporate_name, :cnpj, :address, :phone_number, :email, 
             :code, presence: true 
   before_validation :add_email, :add_code

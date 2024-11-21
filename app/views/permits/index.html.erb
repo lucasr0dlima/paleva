@@ -1,0 +1,5 @@
+<% @permits.each do |permit| %>
+  <p> <%= permit.email %> | <%= permit.cpf %> </p>
+<% end %>
+
+<%= link_to "Nova Permissão", new_permit_path %>

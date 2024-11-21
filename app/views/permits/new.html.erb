@@ -1,0 +1,15 @@
+<%= form_with model: @permit do |f| %>
+  <div>
+    <%= f.label :email, "E-mail" %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :cpf, "CPF" %>
+    <%= f.text_field :cpf %>
+  </div>
+
+  <div class="register_button">
+    <%= f.submit "Cadastrar" %>
+  </div>
+<% end %>

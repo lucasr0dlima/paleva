@@ -31,7 +31,7 @@ describe 'usuário cria conta' do
     fill_in "Nome", with: "Caio"
     fill_in "Sobrenome", with: "Sampaio"
     within('.actions') do
-    click_on "Criar conta"  
+      click_on "Criar conta"  
     end
 
     # Assert

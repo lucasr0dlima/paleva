@@ -13,4 +13,10 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def must_be_admin
+    if user_signed_in? && current_user.role == "regular"
+      redirect_to root_path, alert: "Página reservada para adiminstradores"
+    end
+  end
 end

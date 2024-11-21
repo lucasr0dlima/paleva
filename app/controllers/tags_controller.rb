@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_action :must_register_restaurant
+  before_action :must_register_restaurant, :must_be_admin
   def new
     @tag = Tag.new
   end

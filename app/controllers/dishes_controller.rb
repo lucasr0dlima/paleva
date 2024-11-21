@@ -1,5 +1,5 @@
 class DishesController < ApplicationController
-  before_action :must_register_restaurant
+  before_action :must_register_restaurant, :must_be_admin
   def index
     @dishes = current_user.dishes
   end

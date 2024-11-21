@@ -1,5 +1,5 @@
 class BeveragesController < ApplicationController
-  before_action :must_register_restaurant
+  before_action :must_register_restaurant, :must_be_admin
   def index
     @beverages = current_user.beverages
   end

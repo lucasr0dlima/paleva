@@ -50,6 +50,8 @@ Rails.application.routes.draw do
 
   resources :orders
 
+  resources :permits
+
   # Rails.application.routes.draw do
   #   devise_for :users, controllers: {
   #     sessions: 'users/sessions'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_19_201203) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_20_122425) do
   create_table "menu_items", force: :cascade do |t|
     t.integer "product_id", null: false
     t.integer "menu_id", null: false
@@ -48,6 +48,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_19_201203) do
     t.integer "restaurant_id", null: false
     t.integer "status", default: 0
     t.index ["restaurant_id"], name: "index_orders_on_restaurant_id"
+  end
+
+  create_table "permits", force: :cascade do |t|
+    t.string "email"
+    t.string "cpf"
+    t.integer "restaurant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_permits_on_restaurant_id"
   end
 
   create_table "portions", force: :cascade do |t|
@@ -116,6 +125,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_19_201203) do
     t.string "cpf"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -126,6 +136,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_19_201203) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "portions"
   add_foreign_key "orders", "restaurants"
+  add_foreign_key "permits", "restaurants"
   add_foreign_key "portions", "products"
   add_foreign_key "products", "restaurants"
   add_foreign_key "products", "users"
