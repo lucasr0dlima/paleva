@@ -35,4 +35,17 @@ class OrdersController < ApplicationController
 
     @portions = @order.portions
   end
+
+  def edit
+    @order = Order.find(params[:id])
+  end
+
+  def update
+    @order = Order.find(params[:id])
+
+    if @order.update(params.require(:order).permit(:status))
+      redirect_to order_path(@order)
+    end
+  end
+
 end

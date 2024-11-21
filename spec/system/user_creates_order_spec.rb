@@ -163,4 +163,27 @@ describe 'Usuário faz um pedido' do
 
     expect(result). to eq 2
   end
+
+  it 'e altera o status' do
+    user = User.create!(email: 'caio@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: '57136336163')
+    place = Restaurant.create!(brand_name: 'TIM', corporate_name: 'Tim ltda', cnpj: "E67A879U2DOS80", address: 'Rua São Pedro 1234, São Paulo/SP', phone_number: "9180088008", user: user, code: 'EYFFKJ')
+    Tag.create!(name:"Apimentado")
+    beverage = Beverage.create!(name: 'Caipirinha', description: "Bebida alcoolica de limão e cachaça.", image: "https://i.panelinha.com.br/i1/228-q-8730-blog-caipirinha-de-limao.webp", alcohol: true,  user: user, restaurant: place, calories: '125kcal')
+    portion = beverage.portions.create!(description: "500ml", price: "R$20,00")
+    menu = Menu.create!(name:"Jantar", restaurant: place)
+    menu.menu_items.create!(product: beverage)
+    order = Order.create!(name: "João Souza", phone_number: "812205154", email: "joao.souza@gmail.com", cpf: "06939081658", restaurant: place)
+    order.order_items.create!(portion_id: portion.id)
+
+    login_as(user)
+    visit root_path
+    within('nav') do
+      click_on "Pedidos"
+    end
+    click_on "Pedido #{order.code}"
+    select "Em preparação", from: "Alterar status:"
+    click_on "Alterar"
+
+    expect(page).to have_content "Status - Em preparação"
+  end
 end

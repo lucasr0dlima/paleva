@@ -1,6 +1,7 @@
 <div class="order_details">
 
   <h3> Pedido <%= @order.code %> </h3>
+  <h4>Status - <%= I18n.translate(@order.status) %></h4>
   
   <div>
       <strong>
@@ -36,5 +37,13 @@
       <p> <%= item.product.name %> : <%= item.description %> | <%= t('portion_price', price: item.dollars) %> </p>
     </div>
   <% end %>
+
+  <div>
+    <%= form_with model: @order do |f| %>
+      <%= f.label :status, "Alterar status:" %> <br />
+      <%= f.select :status, Order.statuses.keys.collect {|status| [I18n.translate(status), status] } %><br />
+      <%= f.submit "Alterar" %>
+    <% end %>
+  </div>
 
 </div>
