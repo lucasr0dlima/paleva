@@ -161,6 +161,19 @@ describe 'API' do
       expect(json_response["status"]).to eq 'preparation'
     end
 
+    it 'with success, from preparation to ready' do
+      user = User.create!(email: 'caio@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: '57136336163')
+      place = Restaurant.create!(brand_name: 'TIM', corporate_name: 'Tim ltda', cnpj: "E67A879U2DOS80", address: 'Rua São Pedro 1234, São Paulo/SP', phone_number: "9180088008", user: user, code: 'EYFFKJ')
+      order = Order.create!(name: "João Souza", phone_number: "812205154", email: "joao.souza@gmail.com", cpf: "06939081658", restaurant: place)
+
+      put "/api/v1/restaurants/#{place.code}/orders/#{order.code}", params: {status: 'ready'}
+
+      expect(response).to have_http_status :ok
+      json_response = JSON.parse(response.body)
+      expect(json_response["name"]).to eq order.name
+      expect(json_response["status"]).to eq 'ready'
+    end
+
     it 'with failure, returning status 404' do
       user = User.create!(email: 'caio@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: '57136336163')
       place = Restaurant.create!(brand_name: 'TIM', corporate_name: 'Tim ltda', cnpj: "E67A879U2DOS80", address: 'Rua São Pedro 1234, São Paulo/SP', phone_number: "9180088008", user: user, code: 'EYFFKJ')
