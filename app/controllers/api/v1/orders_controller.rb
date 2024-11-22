@@ -62,7 +62,7 @@ class Api::V1::OrdersController < ActionController::API
   def show
     begin
       order = Order.find_by!(code: params[:code])
-      render status: 200, json: order.as_json(only: [:name, :created_at, :status], include: :order_items)
+      render status: 200, json: order.as_json(only: [:name, :created_at, :status, :note], include: :order_items)
     rescue
       render status: 404, json: {}
     end
@@ -72,9 +72,9 @@ class Api::V1::OrdersController < ActionController::API
     begin
       order = Order.find_by!(code: params[:code])
       order.update!(params.permit(:status))
-      render status: :ok, json: order.as_json(only: [:name, :created_at, :status], include: :order_items)
+      render status: :ok, json: order.as_json(only: [:name, :created_at, :status, :note], include: :order_items)
     rescue
-      render status: :bad_request, json: order.as_json(only: [:name, :created_at, :status], include: :order_items)
+      render status: :bad_request, json: order.as_json(only: [:name, :created_at, :status, :note], include: :order_items)
     end
   end
 end

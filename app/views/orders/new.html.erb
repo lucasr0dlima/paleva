@@ -19,6 +19,15 @@
     <%= f.text_field :phone_number %>
   </div>
 
+  <div>
+    <%= f.label :note %> <br />
+    <%= f.text_field :note %>
+  </div>
+
+  <div>
+    Valor total: <%= t('portion_price', price: @total_value) %>
+  </div>
+
   <div class="register_button">
     <%= f.submit "Finalizar" %>
   </div>

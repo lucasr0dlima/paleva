@@ -13,4 +13,4 @@ pt-BR:
         phone_number: "Telefone"
         email: "E-mail"
         cpf: "CPF"
-        status:
+        note: "Observação"

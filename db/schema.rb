@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_20_122425) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_22_065645) do
   create_table "menu_items", force: :cascade do |t|
     t.integer "product_id", null: false
     t.integer "menu_id", null: false
@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_20_122425) do
     t.string "code"
     t.integer "restaurant_id", null: false
     t.integer "status", default: 0
+    t.string "note"
     t.index ["restaurant_id"], name: "index_orders_on_restaurant_id"
   end
 

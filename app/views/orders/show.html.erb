@@ -3,6 +3,20 @@
   <h3> Pedido <%= @order.code %> </h3>
   <h4>Status - <%= I18n.translate(@order.status) %></h4>
   
+  Itens :
+  <% @portions.each do |item| %>
+    <div id="<%= item.id %>">
+      <p> <%= item.product.name %> : <%= item.description %> | <%= t('portion_price', price: item.dollars) %> </p>
+    </div>
+  <% end %>
+
+  <div>
+      <strong>
+        <%= Order.human_attribute_name("note") %> :
+      </strong>
+      <%= @order.note %>
+  </div>
+
   <div>
       <strong>
         <%= Order.human_attribute_name("name") %> :
@@ -31,12 +45,6 @@
       <%= @order.phone_number %>
   </div>
 
-  Itens :
-  <% @portions.each do |item| %>
-    <div id="<%= item.id %>">
-      <p> <%= item.product.name %> : <%= item.description %> | <%= t('portion_price', price: item.dollars) %> </p>
-    </div>
-  <% end %>
 
   <div>
     <%= form_with model: @order do |f| %>

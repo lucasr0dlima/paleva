@@ -186,4 +186,38 @@ describe 'Usuário faz um pedido' do
 
     expect(page).to have_content "Status - Em preparação"
   end
+
+  it 'com uma observação' do
+    user = User.create!(email: 'caio@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: '57136336163')
+    place = Restaurant.create!(brand_name: 'TIM', corporate_name: 'Tim ltda', cnpj: "E67A879U2DOS80", address: 'Rua São Pedro 1234, São Paulo/SP', phone_number: "9180088008", user: user, code: 'EYFFKJ')
+    beverage = Beverage.create!(name: 'Caipirinha', description: "Bebida alcoolica de limão e cachaça.", image: "https://i.panelinha.com.br/i1/228-q-8730-blog-caipirinha-de-limao.webp", alcohol: true,  user: user, restaurant: place, calories: '125kcal')
+    portion = beverage.portions.create!(description: "500ml", price: "R$20,00")
+    menu = Menu.create!(name:"Jantar", restaurant: place)
+    menu.menu_items.create!(product: beverage)
+
+    login_as(user)
+    visit root_path
+    click_on menu.name
+    within("##{beverage.id}") do
+      within("#portion_#{portion.id}") do
+        click_on "Adicionar a pedido"
+      end
+    end
+    click_on "Finalizar Pedido"
+    fill_in "Nome", with: "João Souza"
+    fill_in "Telefone", with: "812205154"
+    fill_in "E-mail", with: "joao.souza@gmail.com"
+    fill_in "CPF", with: "06939081658"
+    fill_in "Observação", with: "Sem limão."
+    click_on "Finalizar"
+
+    expect(current_path).to eq root_path
+    expect(page).to have_content "Pedido feito com sucesso"
+    order = Order.find_by(cpf: "06939081658")
+    within('nav') do
+      click_on "Pedidos"
+    end
+    click_on "Pedido #{order.code}"
+    expect(page).to have_content "Sem limão."
+  end
 end
