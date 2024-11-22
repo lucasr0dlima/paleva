@@ -4,4 +4,5 @@ class Menu < ApplicationRecord
   belongs_to :restaurant
 
   validates :name, uniqueness: {scope: :restaurant}
+  validates :name, presence: true
 end

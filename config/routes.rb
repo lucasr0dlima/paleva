@@ -52,6 +52,21 @@ Rails.application.routes.draw do
     
   resources :permits
 
+  namespace 'api' do
+    namespace 'v1' do
+      # resources :orders, only: [:index]
+      resources :restaurants do
+        resources :orders, on: :member do
+          get 'pending', on: :collection
+          get 'preparation', on: :collection
+          get 'ready', on: :collection
+          get 'canceled', on: :collection
+          get 'delivered', on: :collection
+        end
+      end
+    end
+  end
+
   # Rails.application.routes.draw do
   #   devise_for :users, controllers: {
   #     sessions: 'users/sessions'

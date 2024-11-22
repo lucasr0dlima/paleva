@@ -74,4 +74,16 @@ RSpec.describe Dish, type: :model do
       expect(dish.errors).to include :status
     end
   end
+
+  describe "#type" do
+    it 'should return dish' do
+      user = User.create!(email: 'pedro@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: '57136336163')
+      place = Restaurant.create!(brand_name: 'TIM', corporate_name: 'Tim ltda', cnpj: "E67A879U2DOS80", address: 'Rua São Pedro 1234, São Paulo/SP', phone_number: "9180088008", user: user, code: 'EYFFKJ')
+      dish = Dish.new(description: "Salada preparada com alface-romana e molho Caesar", image: "https://static.itdg.com.br/images/1200-675/3f0787cb6db2f0db10269fc45bd8abee/shutterstock-1078415420.jpg", calories: '128 kcal', user: user, restaurant: place)
+
+      type = dish.type
+
+      expect(type).to eq "Dish"
+    end
+  end
 end
