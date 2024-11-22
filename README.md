@@ -1,24 +1,21 @@
-# README
+# PaleVá
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Projeto para treinaDev 13, feito em ruby on rails. Se trata de uma aplicação web com o objetivo de administrar diversos restaurantes, que podem ser acessados por vários usuários, onde cardápios com produtos variados podem ser manipulados. A partir desses cardápios, pedidos podem ser feitos, permitindo a adiministração interna de serviços de Take Out.
 
-Things you may want to cover:
+### Informações:
 
-* Ruby version
+- Versão do Ruby: 3.3.4
 
-* System dependencies
+- Versão do Rails: 7.2.1
 
-* Configuration
+- Projeto feito no VScode, através do WSL2
 
-* Database creation
+## Informações para testa a aplicação (Seeds):
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Logins:
+  - Administrador:
+    - E-mail: pedro@gmail.com
+    - Senha: 123456
+  - Usuário Regular:
+    - E-mail: caio.rocha@gmail.com
+    - Senha: 123456

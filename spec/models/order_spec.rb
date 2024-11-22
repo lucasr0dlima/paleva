@@ -17,11 +17,15 @@ RSpec.describe Order, type: :model do
       place = Restaurant.create!(brand_name: 'TIM', corporate_name: 'Tim ltda', cnpj: "E67A879U2DOS80", address: 'Rua São Pedro 1234, São Paulo/SP', phone_number: "9180088008", user: user, code: 'EYFFKJ')
       order = Order.new(name: "João Souza", phone_number: "812205154", cpf: "06939081658", restaurant: place, note: "Sem limão.")
       order_b = Order.new(name: "João Souza", email: "joao.souza@gmail.com", cpf: "06939081658", restaurant: place, note: "Sem limão.")
+      order_c = Order.new(name: "João Souza", cpf: "06939081658", restaurant: place, note: "Sem limão.")
 
       order.valid?
+      order_b.valid?
+      order_c.valid?
 
       expect(order.errors).not_to include :email
-      expect(order.errors).not_to include :phone_number
+      expect(order_b.errors).not_to include :phone_number
+      expect(order_c.errors).to include :email
     end
 
     it 'false when cpf is invalid' do

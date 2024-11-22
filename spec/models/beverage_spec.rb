@@ -32,14 +32,14 @@ RSpec.describe Beverage, type: :model do
       expect(bev.errors).not_to include :image
     end
 
-    it 'false when alcohol is empty' do
+    it 'true when alcohol is false' do
       user = User.create!(email: 'pedro@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: '57136336163')
       place = Restaurant.create!(brand_name: 'TIM', corporate_name: 'Tim ltda', cnpj: "E67A879U2DOS80", address: 'Rua São Pedro 1234, São Paulo/SP', phone_number: "9180088008", user: user, code: 'EYFFKJ')
-      bev = Beverage.new(name: "Caipirinha", description: "Bebida alcoolica de limão e cachaça.", image: "https://i.panelinha.com.br/i1/228-q-8730-blog-caipirinha-de-limao.webp", user: user, restaurant: place)
+      bev = Beverage.new(name: "Caipirinha", description: "Bebida alcoolica de limão e cachaça.", image: "https://i.panelinha.com.br/i1/228-q-8730-blog-caipirinha-de-limao.webp", user: user, restaurant: place, alcohol: false)
 
       bev.valid?
 
-      expect(bev.errors).to include :alcohol
+      expect(bev.errors).not_to include :alcohol
     end
 
     it 'false when user is empty' do

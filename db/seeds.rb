@@ -1,19 +1,23 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-user = User.create!(email: 'pedro@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: '57136336163')
-place = Restaurant.create!(brand_name: 'TIM', corporate_name: 'Tim ltda', cnpj: "E67A879U2DOS80", address: 'Rua São Pedro 1234, São Paulo/SP', phone_number: "9180088008", user: user, code: 'EYFFKJ')
-beverage = Beverage.create!(name: 'Caipirinha', description: "Bebida alcoolica de limão e cachaça.", image: "https://i.panelinha.com.br/i1/228-q-8730-blog-caipirinha-de-limao.webp", alcohol: true,  user: user, restaurant: place, calories: '125kcal')
-Dish.create!(name: 'Salada Caesar', description: "Salada preparada com alface-romana e molho Caesar", image: "https://static.itdg.com.br/images/1200-675/3f0787cb6db2f0db10269fc45bd8abee/shutterstock-1078415420.jpg", user: user, restaurant: place)
-portion = beverage.portions.create!(description: "500ml", price: "R$20,00")
-menu = Menu.create!(name:"Jantar", restaurant: place)
-menu.menu_items.create!(product: beverage)
-order = Order.create!(name: "João Souza", phone_number: "812205154", email: "joao.souza@gmail.com", cpf: "06939081658", restaurant: place)
-order.order_items.create!(portion_id: portion.id)
+admin = User.create!(email: 'pedro@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: '57136336163')
+place = Restaurant.create!(brand_name: 'TIM', corporate_name: 'Tim ltda', cnpj: "E67A879U2DOS80", address: 'Rua São Pedro 1234, São Paulo/SP', phone_number: "9180088008", user: admin, code: 'EYFFKJ')
+place.permits.create!(email:"caio.rocha@gmail.com", cpf: "99286956100")
+User.create!(email: "caio.rocha@gmail.com", cpf: "99286956100", password: '123456', name: 'Caio', last_name: 'Rocha')
+
+
+caipirinha = Beverage.create!(name: 'Caipirinha', description: "Bebida alcoolica de limão e cachaça.", image: "https://i.panelinha.com.br/i1/228-q-8730-blog-caipirinha-de-limao.webp", alcohol: true,  user: admin, restaurant: place, calories: '125kcal')
+salad = Dish.create!(name: 'Salada Caesar', description: "Salada preparada com alface-romana e molho Caesar", image: "https://static.itdg.com.br/images/1200-675/3f0787cb6db2f0db10269fc45bd8abee/shutterstock-1078415420.jpg", user: admin, restaurant: place)
+coffee = Beverage.create!(name: 'Café', description: "Bebida matinal com cafeína.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/640px-A_small_cup_of_coffee.JPG", alcohol: false,  user: admin, restaurant: place, calories: '50kcal')
+
+caipirinha.portions.create!(description: "250ml", price: 2000)
+salad.portions.create!(description: "200g", price: 1500)
+salad.portions.create!(description: "400g", price: 3000)
+coffee.portions.create!(description: "50ml", price: 500)
+coffee.portions.create!(description: "150ml", price: 1500)
+
+dinner = Menu.create!(name:"Jantar", restaurant: place)
+dinner.menu_items.create!(product: caipirinha)
+dinner.menu_items.create!(product: salad)
+
+breakfast = Menu.create!(name:"Café da Manhã", restaurant: place)
+breakfast.menu_items.create!(product: coffee)
 
