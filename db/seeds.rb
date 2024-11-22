@@ -1,7 +1,5 @@
 admin = User.create!(email: 'pedro@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: '57136336163')
-place = Restaurant.create!(brand_name: 'TIM', corporate_name: 'Tim ltda', cnpj: "E67A879U2DOS80", address: 'Rua São Pedro 1234, São Paulo/SP', phone_number: "9180088008", user: admin, code: 'EYFFKJ')
-place.permits.create!(email:"caio.rocha@gmail.com", cpf: "99286956100")
-User.create!(email: "caio.rocha@gmail.com", cpf: "99286956100", password: '123456', name: 'Caio', last_name: 'Rocha')
+place = Restaurant.create!(brand_name: 'Bom Lanche', corporate_name: 'Bom Lanche ltda', cnpj: "E67A879U2DOS80", address: 'Rua São Pedro 1234, São Paulo/SP', phone_number: "9180088008", user: admin, code: 'EYFFKJ')
 
 
 caipirinha = Beverage.create!(name: 'Caipirinha', description: "Bebida alcoolica de limão e cachaça.", image: "https://i.panelinha.com.br/i1/228-q-8730-blog-caipirinha-de-limao.webp", alcohol: true,  user: admin, restaurant: place, calories: '125kcal')

@@ -1,5 +1,6 @@
 class PortionsController < ApplicationController
-  before_action :must_register_restaurant, :must_be_admin
+  before_action :must_register_restaurant
+  before_action :must_be_admin, except: :order
   def new
     @product = Product.find(params[:product_id])
 

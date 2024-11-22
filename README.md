@@ -16,6 +16,3 @@
   - Administrador:
     - E-mail: pedro@gmail.com
     - Senha: 123456
-  - Usuário Regular:
-    - E-mail: caio.rocha@gmail.com
-    - Senha: 123456

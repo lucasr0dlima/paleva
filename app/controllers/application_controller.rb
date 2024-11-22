@@ -19,4 +19,5 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, alert: "Página reservada para adiminstradores"
     end
   end
+  
 end
