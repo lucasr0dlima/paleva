@@ -67,4 +67,14 @@ class Api::V1::OrdersController < ActionController::API
       render status: 404, json: {}
     end
   end
+
+  def update
+    begin
+      order = Order.find_by!(code: params[:code])
+      order.update!(params.permit(:status))
+      render status: :ok, json: order.as_json(only: [:name, :created_at, :status], include: :order_items)
+    rescue
+      render status: :bad_request, json: order.as_json(only: [:name, :created_at, :status], include: :order_items)
+    end
+  end
 end
