@@ -58,4 +58,13 @@ class Api::V1::OrdersController < ActionController::API
       render status: 404, json: {}
     end
   end
+
+  def show
+    begin
+      order = Order.find_by!(code: params[:code])
+      render status: 200, json: order.as_json(only: [:name, :created_at, :status], include: :order_items)
+    rescue
+      render status: 404, json: {}
+    end
+  end
 end

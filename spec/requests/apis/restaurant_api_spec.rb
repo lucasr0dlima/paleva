@@ -121,4 +121,29 @@ describe 'Restaurant API' do
       expect(json_response[1]["name"]).to eq "Pedro Souza"
     end
   end
+
+  context 'order show' do
+    it 'returns status 200 on success' do
+      user = User.create!(email: 'caio@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: '57136336163')
+      place = Restaurant.create!(brand_name: 'TIM', corporate_name: 'Tim ltda', cnpj: "E67A879U2DOS80", address: 'Rua São Pedro 1234, São Paulo/SP', phone_number: "9180088008", user: user, code: 'EYFFKJ')
+      order = Order.create!(name: "João Souza", phone_number: "812205154", email: "joao.souza@gmail.com", cpf: "06939081658", restaurant: place)
+
+      get "/api/v1/restaurants/#{place.code}/orders/#{order.code}"
+
+      expect(response).to have_http_status 200
+      json_response = JSON.parse(response.body)
+      expect(json_response["name"]).to eq order.name
+      expect(json_response["status"]).to eq order.status
+    end
+
+    it 'returns status 404 on failure' do
+      user = User.create!(email: 'caio@gmail.com', password: '123456', name: 'Pedro', last_name: 'Pereira', cpf: '57136336163')
+      place = Restaurant.create!(brand_name: 'TIM', corporate_name: 'Tim ltda', cnpj: "E67A879U2DOS80", address: 'Rua São Pedro 1234, São Paulo/SP', phone_number: "9180088008", user: user, code: 'EYFFKJ')
+      Order.create!(name: "João Souza", phone_number: "812205154", email: "joao.souza@gmail.com", cpf: "06939081658", restaurant: place)
+
+      get "/api/v1/restaurants/#{place.code}/orders/999999"
+
+      expect(response).to have_http_status 404
+    end
+  end
 end
