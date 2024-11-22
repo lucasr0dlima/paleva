@@ -55,7 +55,7 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       # resources :orders, only: [:index]
-      resources :restaurants do
+      resources :restaurants, param: :code do
         resources :orders, on: :member do
           get 'pending', on: :collection
           get 'preparation', on: :collection
